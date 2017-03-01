@@ -203,5 +203,7 @@
   "tagForegroundColor":"Default tag text color",
   "colorChangesToAllTags":"Apply color changes to all tags of the group",
   "delete": "Delete",
+  "switchDirectoryView": "Customize Folder View",
+  "switchDirectoryViewHelp": "Yes you can switch to Tree hierarchical view or List view. Default folder view of List for ALL the folders",
   "-": "-"
 }

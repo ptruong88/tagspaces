@@ -135,7 +135,8 @@ var isWin = navigator.appVersion.indexOf("Win")!==-1;
       tspro:                   PRO_JS,
       tsaudiorecorderui:      'js/audiorecorder.ui',
       tsmapui:                'js/map.ui',
-      tscalendarui:           'js/calendar.ui'
+      tscalendarui:           'js/calendar.ui',
+      tsdirectoriestreeui:    'js/directorytree.ui'
     },
     shim: {
       'underscore':               { exports: '_' },

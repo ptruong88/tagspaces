@@ -23,6 +23,7 @@ define(function (require, exports, module) {
         "showWarningRecursiveScan": true,
         "prefixTagContainer":       "",
         "tagDelimiter":             " ",
+        "switchDirectoryView":      false,
         "calculateTags":            false,
         "loadLocationMeta":         false,
         "useSearchInSubfolders":    true,

@@ -787,6 +787,18 @@ define(function(require, exports, module) {
     exports.Settings.calculateTags = value;
   }
 
+  function getSwitchDirectoryView() {
+    if (exports.Settings.switchDirectoryView === undefined) {
+      exports.Settings.switchDirectoryView = exports.DefaultSettings.switchDirectoryView;
+    }
+    return exports.Settings.switchDirectoryView;
+  }
+
+  function setSwitchDirectoryView(value) {
+
+    exports.Settings.switchDirectoryView = value;
+  }
+
   function getLoadLocationMeta() {
     if (exports.Settings.loadLocationMeta === undefined) {
       exports.Settings.loadLocationMeta = exports.DefaultSettings.loadLocationMeta;
@@ -1582,4 +1594,6 @@ define(function(require, exports, module) {
   exports.setDefaultTagColor = setDefaultTagColor;
   exports.getDefaultTagTextColor = getDefaultTagTextColor;
   exports.setDefaultTagTextColor = setDefaultTagTextColor;
+  exports.getSwitchDirectoryView = getSwitchDirectoryView;
+  exports.setSwitchDirectoryView = setSwitchDirectoryView;
 });

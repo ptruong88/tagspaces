@@ -154,6 +154,7 @@ define(function(require, exports, module) {
     $('#showHiddenFilesCheckbox').attr('checked', TSCORE.Config.getShowUnixHiddenEntries());
     $('#showMainMenuCheckbox').attr('checked', TSCORE.Config.getShowMainMenu());
     $('#checkforUpdatesCheckbox').attr('checked', TSCORE.Config.getCheckForUpdates());
+    $('#switchDirectoryView').attr('checked', TSCORE.Config.getSwitchDirectoryView());
     $('#calculateTagsCheckbox').attr('checked', TSCORE.Config.getCalculateTags());
     $('#loadLocationMetaData').attr('checked', TSCORE.Config.getLoadLocationMeta());
     $('#useSearchInSubfolders').attr('checked', TSCORE.Config.getUseSearchInSubfolders());
@@ -286,6 +287,7 @@ define(function(require, exports, module) {
     TSCORE.Config.setDefaultTagTextColor($('#tagsForegroundColor').val());
     if (TSCORE.PRO) {
       //var thumbnailSize = $('#defaultThumbnailSize').val();
+      TSCORE.Config.setCalculateTags($('#switchDirectoryView').is(':checked'));
       TSCORE.Config.setEnableMetaData($('#enableMetaData').is(':checked'));
       TSCORE.Config.setUseTrashCan($('#useTrashCan').is(':checked'));
       TSCORE.Config.setUseOCR($('#useOCR').is(':checked'));
