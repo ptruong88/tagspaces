@@ -240,7 +240,7 @@ define(function(require, exports, module) {
   }
 
   function updateSubDirs(dirList) {
-    //console.log("Updating subdirs(TSCORE)..."+JSON.stringify(dirList));
+    console.log("Updating subdirs(TSCORE)..." + JSON.stringify(dirList));
     var hasSubFolders = false;
     for (var i = 0; i < directoryHistory.length; i++) {
       if (directoryHistory[i].path === TSCORE.currentPath) {
@@ -259,7 +259,11 @@ define(function(require, exports, module) {
         });
       }
     }
-    generateDirPath();
+
+    // Switch to List view by default
+    if (!TSCORE.Config.getSwitchDirectoryView()) {
+      generateDirPath();
+    }
     generateAlternativeDirPath();
     handleDirCollapsion();
   }
