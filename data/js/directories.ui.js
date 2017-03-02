@@ -261,10 +261,14 @@ define(function(require, exports, module) {
     }
 
     // Switch to List view by default
-    if (!TSCORE.Config.getSwitchDirectoryView()) {
-      generateDirPath();
+    if (TSCORE.PRO) {
+      if (!TSCORE.Config.getSwitchDirectoryView()) {
+        generateDirPath();
+      } else {
+        TSCORE.PRO.DirectoryTreeUI.populateTree(dirList);
+      }
     } else {
-      TSCORE.PRO.DirectoryTreeUI.populateTree(dirList);
+      generateDirPath();
     }
     generateAlternativeDirPath();
     handleDirCollapsion();
@@ -428,7 +432,7 @@ define(function(require, exports, module) {
 
     // Clearing search results on directory change
     TSCORE.clearSearchFilter();
-    // Cleaning the directory path from \\ \ and / 
+    // Cleaning the directory path from \\ \ and /
     if (directoryPath.lastIndexOf('/') + 1 === directoryPath.length || directoryPath.lastIndexOf('\\') + 1 === directoryPath.length) {
       directoryPath = directoryPath.substring(0, directoryPath.length - 1);
     }
@@ -1017,7 +1021,7 @@ define(function(require, exports, module) {
   function deleteLocation(name) {
     console.log('Deleting folder connection..');
     TSCORE.Config.deleteLocation(name);
-    //Opens the first location in the settings after deleting a location  
+    //Opens the first location in the settings after deleting a location
     if (TSCORE.Config.Settings.tagspacesList.length > 0) {
       openLocation(TSCORE.Config.Settings.tagspacesList[0].path);
       TSCORE.Config.setDefaultLocation(TSCORE.Config.Settings.tagspacesList[0].path);
