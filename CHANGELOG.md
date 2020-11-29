@@ -1,8 +1,434 @@
-﻿#Changelog
+# Changelog
+
+## Version 3.7.6 / 2020.11.11
+
+### 🎉 New features
+
+- Indexing of a location on opening is now disabled
+- Indexing starts on the first search in a given location. The index is valid for 10 minutes, after this time is elapsed the index is recreated on the next search. Every time a index is created it is saved in the current locations .ts folder as tst.json file
+- After a successful indexing the amount of the indexed files is shown in the search panel
+- Size of the location index was significantly reduced
+- If an entry has a geo tag, a map is displayed in the entry properties showing the exact location of the tag
+- The default electron spell-checker for desktop apps is enabled for the file and folder description filed and by editing of html files
+- Pagination for the grid perspective was added, the max count of file in given page can be adjusted in the settings of the perspective
+- PDF thumb generation in now in the main app windows, the hidden worker window is not shown anymore if a folder contains PDFs
+- Explanation before stating the mac tag extraction was added
+- Previewing files on Android was disabled due to security reasons
+- Added support for ACC audio format
+- Added ACC and FLAC file formats in search settings as audio formats
+- Close and clear uploads button added in the upload status dialog
+- **[PRO]** Previewing files on S3 is optimized to load only the first 10000 bytes of a given file.
+- **[PRO]** The editing of the description for files and folder can now be initiated with double click on the description field
+- **[PRO]** Embedding images in the file and folder description and opening external links from there, basic markdown help added
+- **[PRO]** In is now possible to select a default perspective for every folder
+- **[PRO]** Format of the date in the date editor dialog changed to YYYY-MM-DD for 2020-09-24
+- **[PRO]** A new perspective in BETA status called KanBan was added
+
+### 🌟 Enhancements
+
+- The tray menu on macOS was re-enabled
+- The Smart Tags group can now be collapsed (#1246)
+- Exiting full screen from the PDF-viewer fixed on touch enabled devices
+- Folder properties are now be opened always with details switched on, switching the details off is not possible anymore
+- The smart tags are now read-only and emoji icons were exchanged with real platform independent icons
+- Generation of thumbnails for ZIP files was disabled due to a potential performance issues on large files
+- Armenian, Japan, Korean and Chinese translations were updated
+- **[PRO]** Button for navigation to parent directory added in the Mapique and Gallery perspectives
+
+### 🐛 Bug fixes
+
+- Fixed showing thumbs and opening files from global search
+- Fixed global search crash on no location
+- Issues on switching directories and location locally and on S3 fixed
+- **[PRO]** Map in the Mapique perspective is now redrawed after closing of a file or folder entry
+- **[PRO]** Fixed issues with uploading files to S3 from the desktop and the web version
+
+## Version 3.6.2 / 2020.09.16
+
+### 🎉 New features
+
+- added upload progress dialog for copying/uploading many files at once
+- running in portable mode now visible in the desktop app
+- taking advantage of the automatic rotation of JPG according to EXIF now native starting from Chrome 81
+- **[PRO]** add a download button for files on S3 in Android
+- **[PRO]** added a feature in beta status for importing macOS tags in TS
+- **[PRO]** upload to S3 from/to sub directories tree only now possible
+- **[PRO]** uploading many files from local folder to a S3 folder in the location manager and from the Desktop now possible
+
+### 🌟 Enhancements
+
+- improved using of the Enter key for confirming most of the dialogs
+- updated Japanese and Chinese translations
+- enabling exit of the full screen from the PDF-viewer in touch screen only systems
+- moving the PDF thumb generation in main windows in order to prevent showing the worker window
+- fine tuning the importing of files
+- added a custom preview for DnD tags
+- added an uuid for the current folder in its tsm.json
+- added hover for row elements in grid perspective
+- improved entry selection in the row mode of the default perspective
+- upgraded pdf.js to 2.4.456 and electron to 9.0.3
+
+### 🐛 Bug fixes
+
+- fixed scrolling in the main folder panel
+- fixed a typo and wrong tooltip (#1167)
+- fixed user interface glitch in folder navigation (#1095)
+- fixed drag and drop to leaf nodes
+- fixed Move many files from local folder to sub folder on the same level
+- fixed tag library import functionality
+- fixed issue with deleting tags with the same name in different tag groups #1145
+- fixed various small issues in the tag library
+- fixed icon of broken thumbnail images
+- fixed toggling file operation on selection change
+- fixed open prev and next documents with keyboard shortcuts
+
+## Version 3.5.4 / 2020.06.08
+
+### Community
+
+- 🎉 added support for picture-in-picture (PIP) playing mode in the media player
+- 🎉 added switch for playing video with audio only, useful for saving cpu/battery resources while playing music videos
+- 🎉 adding path or URL as title to entry extension
+- 🎉 improving usability search area
+- 🎉 showing URL in the property's path field
+- 🎉 showing different icon in the property path depending on the where the file is located
+- 🎉 enabling re-indexing switch for all kinds of searches
+- 🎉 move files with drag & drop to the location's root folder [#1130](https://github.com/tagspaces/tagspaces/issues/1130)
+- 🎉 enabling escape key for closing application dialogs
+- 🎉 supporting enter for confirming changes in the dialog
+- 🌟 updating Greek and French translations
+- 🌟 upgrading to Electron 7.3.0
+- 🐛 fixing long file extension in grid perspective row view
+- 🐛 fix renaming files from dialog [#1134](https://github.com/tagspaces/tagspaces/issues/1134)
+- 🐛 disabling drag and drop from cloud to local location and vice versa
+- 🐛 fix opening directory in file manager on Windows
+- 🐛 correcting the way of tagging for custom data tag [#1124](https://github.com/tagspaces/tagspaces/issues/1124)
+- 🐛 fix showing main app window
+- 🐛 fix file sorting bug in default perspective [#1120](https://github.com/tagspaces/tagspaces/issues/1120)
+- 🐛 fix issues with file renaming and thumbnail showing in the entry properties
+
+### Pro
+
+- 🌟 global search with mix of local and cloud locations
+- 🐛 fix uploading file to s3 from windows
+- 🐛 fix handling object storage on windows
+- 🐛 fix collecting tags from current location [#1111](https://github.com/tagspaces/tagspaces/issues/1111)
+- 🐛 various issues with the global search, removing duplicates from the global search results
+
+## Version 3.5.2 / 2020.04.19
+
+### Community
+
+- 🎉 Added global key shortcut `ctrl/cmd + shift + f` for showing TagSpaces in search mode
+- 🌟 removing extrafile with portable script because causing issue with MacOS signing
+- 🌟 fine tunning ui of the entry properties area
+- 🌟 optimizing compact mode in grid perspective
+- 🌟 upgrading electron, material-ui, aws-sdk libs
+- 🌟 improving speed by removing the usage of id for tags
+- 🌟 showing tags for which it is searched in the search area
+- 🌟 optimizing displaying search results by removing the text content
+- 🌟 improving ui of the search panel
+- 🌟 enabling creating the index for every location
+- 🌟 improving TagSpaces performance by removing search index from Redux store
+- 🐛 fix issues with file renaming and thumbnail showing in the entry properties
+- 🐛 fix geo pointer shadow icon
+
+### Pro
+
+- 🎉 implementing multi location search, which we call Global search
+- 🎉 support connecting Minio and Digital Ocean Spaces locations
+- 🌟 allow browsing the root folder of a S3 bucket
+- 🐛 fix folder properties in s3 locations
+
+## Version 3.4.2 / 2020.03.06
+
+### Community
+
+- 🎉 implementing switch for toggling tags visibility
+- 🌟 improving handling of key bindings
+- 🌟 adding dmg builds for Mac OS
+- 🌟 restore showing tags in the compact list mode
+- 🌟 added confirmation for opening external links
+- 🌟 upgrading to electron 7
+- 🌟 code base migration to Typescript with Prettier
+- 🌟 updating Armenian, Turkish, Chinese, Japanize and German translations
+- 🌟 add menu with link to help in the Search area and location manager
+- 🌟 lazy loading thumbnails
+- 🌟 allowing spaces as separator for tags in the tag creation dialog
+- 🐛 fixed crash on document save in some cased #1090
+- 🐛 fixed wrong panel in drawer or vertical panel
+- 🐛 changing default markdown formats
+
+### Pro
+
+## Version 3.3.0 / 2019.11.08
+
+### Community
+
+- 🌟 Make newly created files open in edit mode
+- 🌟 Make dialogs and the ui in general mobile friendly
+- 🌟 Improve navigation to parent folder #1038
+- 🌟 Add app detecting mobile mode
+- 🌟 Updating Armenian translation
+- 🌟 Adding platform information in about box
+- 🌟 Extending the welcome window
+- 🐛 Fixed missing uuid by tags, fixing #975
+- 🐛 Fixed auto focus in the create file dialog and the dialog for adding and removing tag #1033
+- 🐛 Prevent adding tags which already existing in a given tag group
+- 🐛 Fixing crash on mobile switch #1037
+- 🐛 Now the app exits on window close under macOS
+
+### Pro
+
+- 🎉 Added support for perspectives
+- 🎉 Added mapique perspective for showing geo-tags in map
+- 🎉 Added gallery perspective for presenting the images in a folder
+- 🎉 Added mobile mode with PWA support
+- 🐛 Allow geo-tagging also in file names
+
+## Version 3.2.5 / 2019.10.10
+
+### Community
+
+- 🌟 Added new help panel, which can be opened from the vertical toolbar
+- 🌟 Improving the onboarding wizard dialog and the help panel
+- 🌟 Added help button in the tag library and default perspective menus
+- 🌟 Click on the search result counter now opens search panel
+- 🌟 Showing a warning message when the folders are hidden and no files are in the current folder
+- 🌟 Improving the onboarding dialog
+- 🐛 Fixing the tag group imports
+- 🐛 Fixing removing tags issue by mixture of sidecar and filename
+- 🐛 Fixing issue, preventing the removal of the last tag in the properties area
+- 🐛 Fixed global shortcuts for playing/pause media content
+- 🐛 Fixing not working tray menu
+- 🐛 Fixing drag and drop highlight of tags [#1021](https://github.com/tagspaces/tagspaces/issues/1021)
+
+### Pro
+
+- 🎉 Added new experimental perspective for viewing folders containing images as gallery
+- 🌟 Added initial perspective switch in the directory menu
+- 🌟 Optimizing update process for PRO users
+
+## Version 3.2.3 / 2019.09.23
+
+### Community
+
+- 🌟 Improving showing file and folder description in grid mode
+- 🌟 Hiding the button for moving folders from the properties section
+- 🌟 Changing the default background color for thumbnails to white
+- 🐛 Fixing adding new file types issue
+- 🐛 Fixing version check crash in the About dialog [#1016](https://github.com/tagspaces/tagspaces/issues/1016)
+- 🐛 Fixing word wrap on cell description
+- 🐛 Fixing file moving issue with drag and drop [#1017](https://github.com/tagspaces/tagspaces/issues/1017)
+
+## Version 3.2.1 / 2019.08.20
+
+### Community
+
+- 🌟 Major refactoring of the smart tags functionalities, smart tags are now ignored by the tag library exports
+- 🌟 Fixing row's compact mode in grid perspective
+- 🌟 Translations for spanish, german, check and other languages updated
+- 🌟 Improvements in the settings dialog
+- 🌟 Many small user interface and usability changes
+- 🌟 Add show in file manager functionality to the location context menu [#1010](https://github.com/tagspaces/tagspaces/issues/1010)
+- 🌟 Now the .ts folders are created only when needed [#998](https://github.com/tagspaces/tagspaces/issues/998)
+- 🌟 Showing file entries count in the search results [#991](https://github.com/tagspaces/tagspaces/issues/991)
+- 🌟 Skipping Unix like hidden folders (name starting with .) by the index generation
+- 🌟 Search is now started on change of the criteria in the search section
+- 🌟 Version number added on the right to the app logo
+- 🐛 Fixing [#908](https://github.com/tagspaces/tagspaces/issues/908) multiple file selection on Mac OS
+- 🐛 Fixing user interface shift on location change in some web browsers
+- 🐛 Fixing [#1009](https://github.com/tagspaces/tagspaces/issues/1009) tagging issue
+- 🐛 Fixing audio playback issues on Android
+- 🐛 Disabling the tray icon and menu on Mac OS
+- 🐛 Bug when add new Tag [#997](https://github.com/tagspaces/tagspaces/issues/997)
+
+### Pro
+
+- 🎉 Implemented ability to add geo locations as tags (geo-tagging)
+- 🎉 Implemented ability to tag files with custom date and time
+- 🎉 Implemented feature for changing the thumbnail of any file or directory manually
+- 🐛 Fixing broken download functionality on s3 locations
+
+### Version 3.1.4 / 2019.04.04\*
+
+### Community
+
+- 🎉 adding open location code / plus codes support
+- 🎉 added ability to open GPS coordinates in Openstreetmap
+- 🎉 added initial support for opening files from command prompt and url
+- 🌟 performance optimizations by updating the search index state
+- 🌟 detecting date and geo tags and displaying them as icon
+- 🌟 ignoring plus code by tag collection
+- 🌟 make updating the index optional after adding new tags
+- 🌟 updating electron to 4.1.0
+- 🌟 updating translations
+- 🌟 updating to fuse 3.4.2
+- 🐛 fixing wrong content scrolling on directory change
+- 🐛 fix crashes on MacOS Mojave
+
+### Pro
+
+- 🎉 content extraction of GPS and shooting date from EXIF and keyword from IPTC in JPGs
+- 🎉 add content extraction button in the directory menu
+- 🎉 extending search to support time periods and plus codes
+- 🎉 added search by last modified date and search by file size
+- 🎉 implementing read-only mode
+- 🎉 Supported loading external config with tag library and locations
+- 🐛 fix index persistence
+
+## Version 3.1.1 / 2019.02.23
+
+### Community
+
+- 🎉 making searching for tags case insensitive
+- 🎉 added the support for semi-transparent color for tags and folders
+- 🎉 extending redux to support external configs
+- 🎉 added read-only support for folder thumbnails
+- 🎉 adding option for the default perspective, making a single click to select only an entry [#909](https://github.com/tagspaces/tagspaces/issues/909)
+- 🎉 added mkv to the list of the supported file formats for thumbnail generation, search and playing with the audio video
+- 🎉 adding show files with this tags to entry tag menu
+- 🎉 added the ability to add tags to all selected files by ctrl+clicking a tag in the tag library
+- 🎉 added the feature to tag all selected files when drag and dropping a tag onto a file
+- 🎉 making the app usable on small screens, hiding the middle panel if the height of the window is greater than the width
+- 🎉 first public release of TagSpaces v3 for Android with a minimum Android version of 6.0 (SDK 23)
+- 🌟 making the toolbars usable on small screens
+- 🌟 improving performance by converting react component to stateless functional components
+- 🌟 enabling drag and drop of tags from one entry to another
+- 🌟 enter confirm adding tags in the add tags dialog
+- 🌟 showing all notification in the bottom middle part of the screen
+- 🌟 showing the correct icon for the currently opened location
+- 🌟 exchanging folder separator in the folder breadcrumb
+- 🌟 enabling settings upgrade for keybindings and files types
+- 🌟 improving startup speed by introducing lazy loading for some components
+- 🌟 upgrading to electron 4.0.4, stabilizing MacOS Mojave
+- 🌟 updating react to 16.8.2 and some other libraries
+- 🐛 fix exception by not existing date for entry properties
+- 🐛 fixing remove file type icon
+- 🐛 disabling spaces, commas and hashes in the tag names
+- 🐛 updating to marked 0.6.0 fixing [#913](https://github.com/tagspaces/tagspaces/issues/913)
+- 🐛 folder view not updating when selecting next or prev file in the file viewer
+
+### Pro
+
+- 🎉 added support for custom background color per folder
+
+* 🌟 always persisting index while on object store locations
+
+## Version 3.0.9 / 2019.02.01
+
+### Community
+
+- extending the tag search to support AND, OR and negative searches, thanks to @IHappyDayI
+- added search boxing enabling search restriction to the current folder
+- clear folder content on directory change
+- added some basic statistics for tag library [#865](https://github.com/tagspaces/tagspaces/issues/865)
+- sorting tags in all tags lists [#849](https://github.com/tagspaces/tagspaces/issues/849)
+- replaced "Open Containing Folder" function with "Show in File Manager" function.
+- add function to generate video thumbnails
+- add openUrl functionality to web version
+- playing next file follows selection in perspective
+- limit the parent directory navigation to current location
+- fix various usability issue in folder container toolbar
+- updated split pane resizer style to prevent the divider from overlapping with the scroll bar [#855](https://github.com/tagspaces/tagspaces/issues/855)
+- added random sort order for directory content, useful when using TagSpaces as media player
+- getting previous and next entries iterate now only over files
+- previous and next file button select file in the perspective
+- added the ability to select multiple files by holding the shift key. [#852](https://github.com/tagspaces/tagspaces/issues/852)
+- added the ability to add multiple files to the selection by holding the shift + ctrl key.
+- reflecting changing of meta data like description in file and search indexes
+- usability improvements in many dialogs
+- refactoring sorting functionality, added sorting by first tag, showing folder always first
+
+### Pro
+
+- added experimental full text search support for TXT, MD and HTML files in the desktop app
+- added functionality for find and extract all the tags from the current location
+- fix navigation to parent folder on Windows and for s3
+
+## Version 3.0.5 / 2019.01.18
+
+### Community
+
+- add collecting tags after tag rename #832(https://github.com/tagspaces/tagspaces/issues/832)
+- fix tag moving bug in tag library
+- fix the check for new version
+- setting minimum height for an empty tag group in tag library
+- making single file click configurable in default perspective
+- added different view modes in default perspective
+- added thumbnail mode switch (css cover vs contain) in default perspective
+- fixing sort order #820(https://github.com/tagspaces/tagspaces/issues/820)
+- fixing broken hiding hidden files and folders #836(https://github.com/tagspaces/tagspaces/issues/836)
+- fixing header text color in dark mode #835(https://github.com/tagspaces/tagspaces/issues/835)
+- updating electron to 3.1.0
+- fixing crash on quit by mac os #816(https://github.com/tagspaces/tagspaces/issues/816)
+- accessing the context menu for locations, tag groups and folders with a right mouse click
+- setting max width to location and tag group names
+- making the location switcher always visible
+- fixed the icons in the location menu
+- fixed the braking of the path history #821(https://github.com/tagspaces/tagspaces/issues/821)
+- fixed the scrolling issues in the location manager and tag library
+- fixed the hiding of the thumbs in row view by long texts
+- updating translations
+
+### Pro
+
+- added search filters for bookmarks and ebooks
+
+## Version 3.0.1 / 2018.12.31
+
+### Community
+
+- fixing tag color issues [#799](https://github.com/tagspaces/tagspaces/issues/799)
+- fix tag name validation
+- fixing dark theme issue in settings
+- fix showing location initially by existing default location
+- disable spaces and other symbols in the tag names
+- fixing max height of the tag area in the grid view [#801](https://github.com/tagspaces/tagspaces/issues/801)
+- fixing importing tag library in web edition [#804](https://github.com/tagspaces/tagspaces/issues/804)
+
+### Pro
+
+- fixing pdf thumb generation
+
+## Version 3.0.0 / 2018.12.21
+
+### Community
+
+- New user interface based on React.js with resizable panels
+- Location indexing for faster search
+- Tree folder navigation
+- Dark theme
+- Preview for PSD, TIFF, DOCX files
+- Playing modes for audio and video files
+
+### Pro
+
+- Connecting of AWS S3 compatible storage locations
+- Watching for changes in a location
+- New advance search functionalities
+
+## Version 2.9.0 / 2017.07.15
+
+### Community
+
+- added support for playing flac and mp3 files
+- added swith for disabling global keybindings [#574](https://github.com/tagspaces/tagspaces/issues/574)
+- allow navigation in the alternative directoriy with a single click
+- updating electron to 1.6.8
+- fixed size of a iframe viewer in the edge browser
+- fixed missing thumbnails of files from search results
+- adding additional check for file path
+- update i18n files for spanish, chinese, russian and dutch languages
+
+### Pro
+
+- fixed issues with handling tags in sidecar files [#582](https://github.com/tagspaces/tagspaces/issues/582) and [#604](https://github.com/tagspaces/tagspaces/issues/604),
 
 ## Version 2.7.0 / 2017.02.04
 
 ### Community
+
 - redesigning the user interface for file and directory properties
 - read only support for file and directory description
 - showing the count of tags in a tag group only if it is collapsed
@@ -26,19 +452,22 @@
 - [#411](https://github.com/tagspaces/tagspaces/issues/411) fixed
 
 ### Pro
+
 - added file description editor in the file properties area
 - added directory description in the directory properties are
 
 ### Chrome Extension and Firefox Addon
+
 - improved onboarding for the chrome extension
 
 ### Android App
-- corrected the loading of meta data
 
+- corrected the loading of meta data
 
 ## Version 2.6.0 / 2016.11.23
 
 ### Community
+
 - Adding a tray icon with a menu
 - Adding global shortcuts for showing the application, opening the previous and next files, pausing the playback
 - Adding new keyboard shortcuts for open, open native and delete
@@ -62,20 +491,24 @@
 - Show source url and saved date in viewerHTML
 
 ### Pro
+
 - Added geo tagging with the leaflet library
 - Making thumbnails size and format configurable
 - Correcting the generation of PDF thumbnails
 
 ### Chrome Extension and Firefox Addon
+
 - Minor bug fixes
 
 ### Android App
+
 - Correcting adding external files
 - Improving position of alert messages
 
 ## Version 2.5.0 / 2016.09.05
 
 ### Community
+
 - Support for folders in the grid perspective
 - Added Maltese and Armenian translation
 - Added new logo
@@ -91,17 +524,21 @@
 - Added extCommon library as a place to share common code between tagspaces extensions
 
 ### Pro
+
 - Minor bug fixes
 
 ### Chrome Extension and Firefox Addon
+
 - Added close button for the chrome extension popup
 
 ### Android App
+
 - no specific changes
 
 ## Version 2.4.0 / 2016.06.09
 
 ### Community
+
 - Added initial implementation for searching in the HTML and MD viewers
 - The user interface of the audio/video player was updated
 - Audio/video player will trigger the opening of the next file in the current folder on finishing playback, allowing you for example to listen many audio files one after another like in a regular music player.
@@ -111,20 +548,28 @@
 - Fixed directory listing issue with the nginx webdav module [#409](https://github.com/tagspaces/tagspaces/issues/409)
 - Fixing showing files containing a tag [#441](https://github.com/tagspaces/tagspaces/issues/441)
 - Starting the search in the advanced search dialog on enter now possible
+
 ### Pro
+
 - Minor bug fixes
+
 ### Chrome Extension and Firefox Addon
+
 - Added the ability to save the source url and date in the saved HTML web page
+
 ### Android App
+
 - Supporting playing of audio while the app is not in foreground
 - Fixing issue with opening files from search results on android [#438](https://github.com/tagspaces/tagspaces/issues/438)
 
 ## Version 2.3.0 / 2016.04.30
 
 ### Pro
+
 - Initial release of [TagSpaces Pro](https://www.tagspaces.org/products/pro)
 
 ### Community
+
 - Redesigning the search user interface, adding new options
 - Considering the parent directory name by the search algorithm
 - Added an option in the settings for limiting the search results
@@ -138,21 +583,26 @@
 - Fixing issue [#358](https://github.com/tagspaces/tagspaces/issues/358) which was preventing file renaming on network shares under OS X
 
 ### Chrome Extension
+
 - Fixes needed for the file system API changes in Chrome 49
 
 ### Android App
+
 - Reenabling the add existing file functionality on Android
 
 ## Version 2.2.5 / 2016.04.24
+
 - Firefox only release, with a signed addon
 - Addon migration to JPM
 
 ## Version 2.2.1 / 2016.03.28
+
 - Fixing embedded images in HTML with data url
 - Fixing search in ImageSwiper perspective
 - Fixing opening of the source link in MHTML viewer
 
 ## Version 2.2.0 / 2016.03.24
+
 - Migration the desktop app to the [Electron](http://electron.atom.io) shell
 - Adding live thumbnails for images in grid and image-swiper perspectives
 - Adding language detection on the first application run
@@ -170,6 +620,7 @@
 - Disabling the firefox file browser in the addon
 
 ## Version 2.1.4 / 2016.03.22 (Android only)
+
 - Adding live thumbnails for images in grid and image-swiper perspectives
 - Adding language detection on first run
 - Adding polish translation thanks to fringoo
@@ -178,11 +629,13 @@
 - Showing Exif and IPTC information from JPEGs in the image viewer extension
 
 ## Version 2.1.1 / 2016.02.03
+
 - Fixing issue with renaming folder in the WebDAV edition
 - Fixing missing icons
-- Fixing loading extensions in Firefox 
+- Fixing loading extensions in Firefox
 
-##Version 2.1.0 / 2016.01.28
+## Version 2.1.0 / 2016.01.28
+
 - Added new perspective(ImageSwiper) for browsing of photos and image
 - Separating all the extension in separate modules/repositories, so they can be now easily extended by advanced users
 - Adding support for search in subfolders for the webdav and chrome versions
@@ -201,9 +654,10 @@
 - Correcting the opening of external links
 - Hosting the current jsdoc of the application on [tagspaces.github.io](http://tagspaces.github.io)
 
-##Version 2.0.1 / 2015.10.31
+## Version 2.0.1 / 2015.10.31
+
 - redesign of the user interface using material paradigms
-- using flexbox for performance optimization of the user interface 
+- using flexbox for performance optimization of the user interface
 - show file names in delete confirmation message
 - adding noty as a notification framework for the project, showing messages for failed operations
 - confirming the rename file, create tag, create tag group, edit tag group, create and rename directory dialogs with enter key
@@ -229,624 +683,3 @@
 - integrating of the rendering engine crosswalk(chromium) for supporting older android devices with SDK 4.1
 - exchanging the pdf.js lib with a newer version
 - enabling back button on android
-
-##Version 1.12.0 / 2015.07.28
-- Added a new audio/video player extension based on plyr.io library
-- Added a new viewer for EPUB files
-- Added a new viewer for ZIP files
-- Hungarian and Chinese Taiwan (big5) languages added
-- Scrolling to bottom of the settings after adding new file type
-- Fixing drag and drop issue for smart tags
-- Directory watcher implemented for node webkit
-- Import tagGroups from settings
-- Added a web clipper for the Firefox
-- Added a an Android widget allowing to take photos and create notes directly from desktop
-- Fixing stopping of the playback of audio and video files after closing them [#251](https://github.com/tagspaces/tagspaces/issues/251)
-- The settings of the Android app are now saved in a file in the app folder
-- Fixing issue with not recognizing folder on some webdav servers
-
-##Version 1.11.0 / 2015.04.15
-- adding korean, greek, catalan, czech, swedish, turkish and dutch translations
-- add a new system tag group collecting all new applied tags
-- added delete selected files functionality to the list and grid perspectives
-- adding generating thumbs for pdf, bmp, webp and svg files in grid perspective
-- added import tag groups functionality
-- internationalizing the UI of the chrome extension
-- reimplementing loading animation
-- adding confirmation on the app closing by unsaved changes on the currently opened file
-- fixing drag and drop issue of tags from files to tag groups
-- exchanging pdf.js with a newer version, moving it as core lib
-- improving code quality by adding jshint and jscs to the project
-- clearing search results on directory change
-- adding handler for the add file button
-- adding title editing to the web scrapping function
-- correcting binding of fastclick lib
-- disabling the support of AVI files in the default settings [#242](https://github.com/tagspaces/tagspaces/issues/242)
-
-##Version 1.10.3 / 2015.01.29
-- Supporting adding of files on Android and the WebDAV edition
-- Fixing issue in the search
-- Fixing adding existing files in the native version [#187](https://github.com/tagspaces/tagspaces/issues/187)
-- Fixing broken following of symlinks
-- Updating translations
-- Enable setting of the language throught url parameter
-- Fixing doubling the main menu [#193](https://github.com/tagspaces/tagspaces/issues/193)
-- Fixing not loading of external json with tag groups on windows
-- Enabling strikeout on Android
-- Persisting sort order in list perspective [#165](https://github.com/tagspaces/tagspaces/issues/165)
-
-##Version 1.10.0 / 2015.01.10
-- redesigning the search functionality
-- typing esc in the search box will close the search area
-- adding new extension(viewerMHTML) for previewing of MHTML files
-- considering the parent directory name in the search results
-- showing search area by filtering for tags
-- updating the Russian, German, French, Japanese, Slovak, Portuguese and Bulgarian translations
-- redesigning settings adding new css toggle switch
-- adding exif reader and automatically rotation of JPG files according to their exif orientation
-- showing main menu made configurable in the settings
-- adding the path to the file in the tooltip of the extension button
-- adding ico as supported file type
-- updating setting auto update
-- adding dom purify lib to the project
-- fixing [#176](https://github.com/tagspaces/tagspaces/issues/149) selecting the same directory twice
-- fixing refresh after deleting [#149](https://github.com/tagspaces/tagspaces/issues/149)
-- fixing broken notification for new versions
-- [native] adding script for running TagSpaces in portable mode
-- [native] fixing handling of broken symlinks links [#182](https://github.com/tagspaces/tagspaces/issues/182)
-- [OSX] fixing native menu with edit, copy, paste and window menus [#174](https://github.com/tagspaces/tagspaces/issues/174)
-- [chrome] adding page capturing capabilities to the chrome extension
-- [chrome] disabling opening of the application on first install
-- [chrome] adding internationalization for the chrome store
-- [chrome] fixing double slash in the begin of a path in chrome
-- updating bootstrap to 3.2.0 and font-awesome to 4.2
-- adding spinkit to the project
-
-##Version 1.9.0 / 2014.11.22
-- added new builds for 64bit Windows and Mac OSX
-- adding new HTML viewer with themes and content zooming
-- loading the background for transparent images after the loading of the image
-- images pasted in the HTML editor are saved as data urls allowing easy web scrapping
-- adding gradients at the begin and end of the left and middle UI areas
-- disabling the wrapping in of the title in the file editor by a long title
-- updating pdf.js to a newer version, solving error by opening of PDFs
-- keeping file selection after renaming/tagging
-- reconfiguring the default viewer and editors for html and json files
-- embedding default css styles in html files created by TagSpaces
-- MHT files are now opened in a new window in chrome and node-webkit, due restriction in security restrictions in chromium
-- adding printing and zooming capabilities to the html, markdown and image viewer
-- enable tagging of the selected files by double click on a tag
-- adding button for opening of the files natively
-- adding styling themes for markdown files
-- adding sandboxing for the viewer's for image, odf and html files
-- disallowing space as a character in dialog for adding new tags in a tag group
-- enabling the export to csv button in chrome and Webdav edition
-- adding experimental thumbnail generation to the grid perspective
-- fixing [#119](https://github.com/tagspaces/tagspaces/issues/119)
-- fixing the utf8 issues [#131](https://github.com/tagspaces/tagspaces/issues/131) and [#134](https://github.com/tagspaces/tagspaces/issues/134)
-- fixing issue with using webdav of different port [#137](https://github.com/tagspaces/tagspaces/issues/137)
-- fixing issue [#125](https://github.com/tagspaces/tagspaces/issues/125) remind the user to enable "Allow access to file URLs"
-- fixing typo in the about box [#133](https://github.com/tagspaces/tagspaces/issues/133)
-- fixing the reload of tagspaces on enter in dialogs [#126](https://github.com/tagspaces/tagspaces/issues/126)
-- native versions based on Node-webkit v0.11.1
-
-##Version 1.8.6 / 2014.10.01
-- implementing of a new file edit functionality
-- implementing of a add file functionality in the desktop versions
-- implementing of the editorJSON extension as viewer and editor for JSON files
-- adding natural sorting of the file in the list perspective
-- adding initial russian translations thanks to `darvin` and `ijon`
-- adding BMP as supported file type for viewing
-- adding key bindings for edit document `ctrl+e` and adding tags `ctrl+t`
-- enabling the export of all tag groups as json file in the settings
-- enable importing of multiple tag groups from the `.ts\tsm.json` file in a location
-- including milliseconds in the formatDateTime4Tag
-- preventing adding of tags and renaming while file in edit mode
-- disabling cleaning of the file selection on file close
-- fixing broken drag and drop of files and tags
-- increasing the size of the select file button
-- adding input validators for various dialogs
-- adding save binary file function
-- adding new file and dir create functionality
-- adding new color chooser in the some dialogs
-- implementing new file save concept
-- adding file move / copy functionality to the file menu
-- focusing the first edit box automatically after opening of a dialog
-- fixing [#107](https://github.com/tagspaces/tagspaces/issues/107) enabling the renaming of tags from for example todo in ToDo
-
-##Version 1.8.5 / 2014.07.25
-- adding support for drag & drop of files into tagspaces from your native file manager
-- adding copy and move file functionality
-- adding duplicate file functionality
-- viewer for .url .website and .desktop files added, allowing you to use TagSpaces as a kind of a bookmark manager
-- sorting functionality for the tags in a taggroup added
-- adding Spanish and initial Ukrainian translations
-- adding support for loading tags from the current location directory, feature can be enabled in the experimental tab of the settings
-- opening new files directly in edit mode
-- removing default content of new markdown and text files
-- adding createHTMLFile, createMDFile, createTXTFile to the core API
-- implementing different behaviour by file save depending if the file is new
-- disabling the blinking cursor in readonly mode
-- disable closing of the current location if a path was wrong or can not be opened.
-- adding cleanTrailingDirSeparator for cleaning of directory path from trailing directory separators in the TagUtils
-- utilizing the waiting dialog for creating dir indexes and trees
-- making target path input box editable in the file move/copy dialog
-- adding focus window function to the platform APIs
-- adding set and get webdav path to the settings API
-- adding watingDialog and fileCopyMoveDialog
-- adding a white background for the image viewer, usefull for viewing transparent images
-- adding a locationDesktop variable to the API
-- restricting the perspective OCRO to show only certain file types
-- adding a home template for the OCRO perspective
-- improving the templates for OCRO perspective
-- updating the OCRO perspective by adding thumbnail and search support
-- adding ability to hide actions not needed in the read only perspective
-- adding config variable for webdav path
-- extending the directory browser with drive selector in windows
-- adding initial implementation for the minimizing to tray functionality
-- fixing issue with opening the directory select dialog
-- fixing [#101](https://github.com/tagspaces/tagspaces/issues/101) duplicated main menu
-- fixing [#102](https://github.com/tagspaces/tagspaces/issues/102) unable ti select text in the markdown viewer
-- upgrading requirejs to 2.1.14
-- upgrading jquery ui to 1.10.4
-- upgrading jquery to 2.1.1
-- upgrading bootstrap lib to 3.2.0
-- [chrome] exchanging the chrome with chromium ioapi not dependent on NPAPI
-- [android] hiding the cancel/dialog close button in cordova
-- [android] disabling export to csv in cordova
-- [firefox] adding file copy functionality and fixing messaging api change introduced with Firefox 30
-
-##Version 1.8.3 / 2014.05.18
-- brazilian-portuguese translation added
-- portuguese translation added
-- japanese translation added
-- french translation added
-- slovak translation added
-- adding delete directory functionality
-- adding rename directory functionality
-- adding a export in CSV functionality in the perspectiveList
-- disabling automatic resizing of the main window
-- fixing missing tags in the file viewer
-- fixing saving of UTF8 content in chrome [#14](https://github.com/tagspaces/tagspaces/issues/14) , [#64](https://github.com/tagspaces/tagspaces/issues/64) , [#80](https://github.com/tagspaces/tagspaces/issues/80)
-- [webdav] fixing issue caused by spaces in the directory names
-- [API] ading extractDirectoryName method to the tagutils
-- [debian]adding application new icon
-- downgrading to a old pdf.js lib, due incorpartabilities in PDF rendering of images
-- adding filesaver.js to the project
-- updating to fontawesome 4.1
-- updating hammer.js to a newer version
-
-##Version 1.8.1 / 2014.05.15
-- adding chinese and bulgarian(50%) translation to the project
-- releasing a technology preview of a self hosting version of TagSpaces based on WebDAV
-- [marked](https://github.com/chjj/marked/) integrated as a new markdown rendering library, allowing github's [gfm](https://help.github.com/articles/github-flavored-markdown), tables and more
-- now it is possible to associate a file type to be opened with TagSpaces by default
-- associating the applications in OS X, Ubuntu and Android to open markdown and mhtml files by default
-- adding file 'download' functionality, allowing you to save a file locally wherever you want
-- adding top menu for the native applications, allowing you to access quickly basic functionalities
-- adding a new tag group with rating tags e.g. 1star
-- now it is possible to add keybinding to a tag
-- adding tags to the file properties dialog
-- the file types in settings are now sorted alphabetically
-- adding keybinding for showing tag libraries and directory navigator
-- [#65](https://github.com/tagspaces/tagspaces/issues/65) implementing clean tags functionality
-- [#68](https://github.com/tagspaces/tagspaces/issues/68) showing files from hidden directories fixed
-- [#62](https://github.com/tagspaces/tagspaces/issues/62) fixing issue where the UI was not refreshed after delete
-- opening the tag library and the directory navigator now opens the left panel
-- adding open left panel function to the core api
-- adding setting isFirstRun
-- adding scrolling in the tag suggesion menu
-- adding custom mht viewer for the hosted edition
-- adding TSCORE.UI to the core
-- adding showAboutDialog to the core ui api
-- exchanging pdf.js and underscore.js with a newer versions
-- disabling selection of text in user interface
-
-##Version 1.8.0 / 2014.05.02
-- adding configurable keybinding
-- adding shortcut for loading the previous and the next document
-- german and italian translations added
-- improvements in the options dialog
-- fixing [#59](https://github.com/tagspaces/tagspaces/issues/59) about saving utf8 content
-- fixing opening links in the default browser instead of the application [#53](https://github.com/tagspaces/tagspaces/issues/53) in markdown files
-- fixing undo issue [#45](https://github.com/tagspaces/tagspaces/issues/45)
-- reenabling the menu on mac [#44](https://github.com/tagspaces/tagspaces/issues/44)
-- [uservoice] adding setting for showing confirmation dialog before recursive scan
-- [firefox] optimizing the start TagSpaces button in the toolbar for support in Firefox 29
-- [android] new icon
-- optimizing icon layout
-- adding back favicon
-- optimizing loading js libs
-- adding basic handler for command line arguments
-- removing the widger from the addon bar
-- optimizing the dropups in the alternative directory navigator
-- optimizing the tags dropdown menu
-- disabling opening of last location of firefox
-- updating the webodf lib
-- fixing thumbnail refresh
-- adding handling for switching languages
-- moving switching language to general tab
-- adding handling for key bindings
-- adding button for help translating
-- adding tab for keybindings
-- adding new method for language switching
-- adding new keybinding settings
-- fixing issues with embeding local images and images in data urls
-- exchanging ok and cancel in buttons with icons
-- added function for opening links in the default browser of the user
-- exchanging dialog close icons with a bigger one
-- exchanging x in dialogs with a bigger icon
-- exchanging the send to icon
-- changing the default viewer for text files to editorText
-- adding a document listing all the used libraries
-- reducing the widht of the tiles in grid perspective
-- changing the backgroud color of the buttons in the image viewer
-- making the status bar not wrappable
-- jshiniting
-
-##Version 1.7.9 / 2014.04.02
-- removing of many tags on many files now possible in one step
-- making the toolbar icons flat
-- adding swipe gestures for image navigation
-- fixing text wrapping issues in list perspective
-- adding key bindinds for left and right
-- redesigning the alternative path navigation
-- adding "close file" and "send to" actions to the file menu
-- preventing opening links in html files
-- adding confirmation dialog for recursiv scan
-- correcting fastclick integration
-- improving edit title buttons
-- opening location panel on location opening
-- redifining backbutton cordova
-- disable closing of taging dialog by clicking outside of the dialog
-- adding iphone icons for the webapp
-- adding handler for opening of what's new page
-- improving tag handling in dialogs by activating tag selection on blur
-- reactivating showing the popup hint if no location created
-- resigning contact us panel
-- disabling opening the location panel if subfolders exists
-- adding a new iframe viewer extension
-- updating require.js library to a newer version
-- removing the trailing red dot from the editor's content
-- [osx] disabling the file menu on mac
-- [api] extending loadTextFile funcion to support file preview
-
-##Version 1.7.8 / 2014.03.21
-- enabling opening of the last opened location by the start of the application [#29](https://github.com/tagspaces/tagspaces/issues/29)
-- adding the following key bindings
-    - ctrl+r / command+r - reloads the current document
-    - ctrl+s / command+s - saves the current document if opened for editing
-    - esc - closes the current document  
-    - alt-enter - shows the document properties
-- making all dialogs not disappear by clicking outsite of the dialog
-- fixing issue with not displaying local images in markdown files
-- adding webp as supported image format (not in firefox)
-- starting hints are shown only if you don't have last opened location
-- preventing drag & drop of files in the application
-- [api] adding new function for conversion of e.g. 20140313 in js dates
-- jqueryhotkeys exchanged with mousetrap library
-- updating to a newer codemirror version
-- [android] new rounded icons for android added
-- [android] added "send to" functionality for all file types
-- [android] eliminating the 300ms wait time by adding the fastclick library
-- [android] fixing the failing opening of the first document after the start of the app
-
-##Version 1.7.7 / 2014.03.10
-- improving and refactoring the layouting algorithm for a better responsible behaviour, especially on mobile phones
-- adding handler for the new add tag menu item
-- moving toolbar in the image viewer to bottom right
-- removing hover and focus background toggle left panel button
-- adding support for viewing of ODF files (e.g. ODT, ODS, ODG, ODP) not available in firefox and chrome
-- adding new version of pdf.js with support of printing, rotating, dragging, document properties and goto first/last page
-
-##Version 1.7.6 / 2014.02.28
-- remember and open the last state of the application window e.g. maximize or not [#29](https://github.com/tagspaces/tagspaces/issues/29)
-- adding openLocation to the TSCORE API
-- making the directory to taglibrary switch buttons brighter
-- adding functionality to force closing of opened files for editing
-- fixing handling of html files without body
-- fixing saving utf8 content in cordova
-- refresh file list if the saved file is new
-- including webdavlib from sara.nl
-- adding webdav api
-- improved error handling  in node-webkit
-- improved saving ot UTF8 files
-- update to summernote version 0.5.0 with some custom changes
-- changed the default height of the html editor
-- changed the max width of the column in perspective list
-- polishing viewerMD
-- fixing margin issue in the alternative directory navigation
-- quoting the filename in the delete file dialog
-- setting the default editor for xhtml files to editorText as proposed in [#31](https://github.com/tagspaces/tagspaces/issues/31)
-- making viererBrowser secure in node-webkit
-- making viewerPDF secure
-- fixing security issue with the alert and the confirm dialogs
-- increasing the size of the new version available icon
-- disabling node functionality in the odf viewer
-- updating to bootstrap 3.1.1
-- hiding open in new window menu entry in node-webkit for security reasons
-- addign general catcher node-webkit errors
-- correcting drag & drop
-- correcting welcome logo
-- fixing issue with empty titles
-- adding sorting by filename
-- handling the case .txt by extacting of the filename without extension
-- issue with drag and drop by folders solved
-- displaying the number of files found improved
-- correcting the opening of the containing folder in the file viewer
-- correcting opening of the containing folder functionality in node-webkit
-- setting the min lenght of the tags to 2 chars
-- setting space and comma as tags separators for the select2 lib
-- adding hint in the file create dialog for the format of the tags
-- making the tags from select2 lib to look like tagspaces tags
-- partly fixing #25 by removing script tags from the content, by sanitizing the file paths, by removing script tags from the md content
-- fixing [#23](https://github.com/tagspaces/tagspaces/issues/23) css in markdown
-- fixing [#26](https://github.com/tagspaces/tagspaces/issues/26)
-- fixing [#27](https://github.com/tagspaces/tagspaces/issues/27) - utf8 support in md files and not rendering of #header in the beginning of the file, font sizes in headers h1,h2 ...
-- fixing [#30](https://github.com/tagspaces/tagspaces/issues/30)
-- fixing [#31](https://github.com/tagspaces/tagspaces/issues/31)
-- fixing [#32](https://github.com/tagspaces/tagspaces/issues/32)
-- fixing [#33](https://github.com/tagspaces/tagspaces/issues/33)
-
-
-##TagSpaces 1.7.4 / 2014.02.17
-
-- adding hints for the format of the tags in the dialogs
-- clearing current filter on location change
-- adding hover for the file title editor
-- facebook button added
-- disabling reloading of directory by tag rename
-- open files natively added to main file context menu
-- migration to node-webkit 0.9.1
-
-##TagSpaces 1.7.3 / 2014.02.05
-
-- Creating native client for Windows
-- Creating native client for Linux 64
-- Creating native client for Mac OS
-- Adding ubuntu font as default for the application
-- Optimizing of the hint by the first start of the application
-- Splitting the options dialog in tabs
-- Adding one step setting backup
-- New versioning system based 1.2.3
-- Fix fitting of a image in confirm box
-- Adding welcome screen to the application
-- Deactivating toptoolbar on startup
-- Deactivating toptoolbar on location close
-- Handling renaming and deleting of files in the UI
-- Adding HTML directory browser for cordova
-- Adding handling of tag delimiter and prefix tag containers
-- Correcting the undefined text in the toolbar by recursive search
-- Adding a new contact us popover
-- Disable outline border on focused buttons
-- Disable special color on focused buttons
-- Improvement in the tag calculation
-- Optimization of the location edit dialog
-- Adding settings for tag calculation, tagdelimiter and prefix of a tag container
-- Disabling automatically opening of the directory browser after directory change
-- Adding an alternative directory browser in the perspective footer
-- Adding a title to the perspective switcher
-- Adding hotkeys for reloading, fullscreen and devtool in node-webkit
-- Add a contact us dropup
-- Adding a button for the activataion of recursive search
-- Vizualizing extracted tags from the search results
-- Extracting all tags from the currern search results
-- Integrating viewerText as default opener for unknown file types
-- File properties dialog added
-- Adding footer in perspective area
-- Adding predifined perspective per locaiton
-- Preventing dir list after file delete
-- Prevent opening if the files is already in full width mode
-- Added response after file delete
-- File selection optimized
-- Added XHTML as a new file type
-- Implementing searchForTag and searchForString methods
-- Added popup with search rules description
-- Search functionality extracted in the tagspaces core
-- Icons moved to assets folder
-- Datatable slimed down and move to perspectiveList
-- CSS folder merged with assets folder
-- Correcting selection issue
-- Optimizations in the file opener/editor
-- Added api call for closing current location
-- Added handling of not existing folders
-- Implementing location edit functionality
-- Fixing filename refresh issue after renaming
-- Adding bootstrap-editable to the project
-- Fixing edit/save issues in file opener
-- Increasing default font size html editor
-- Adding bootstrap-editable to the project
-- Fixing [#19](https://github.com/tagspaces/tagspaces/issues/19) markdown viewer scrollbar
-- Adding summernote as a default html editor library
-- Added HTML templates to the project
-- Zooming with mouse wheel added to the image viewer
-- Panning and zooming added to the image viewer
-- Adding touch events to the UI
-- Removing the fading of the modals
-- Disable directory deletion in the mozilla io API
-- Adding support for audio, video and source code filetypes
-- Improving the file create dialog
-- Fixed sorting by size in perspectiveList
-- Move tag to first position functionality implemented
-- Adding check by renaming for the existence of the new path
-- Improved adding of new tags in the setting. Minumum tag length is 3 characters
-- Adding of many tags at once separated by comma
-- [webkit] Fixing the huge horizontal scrollbar
-- [android] Opening files on double tap now possible
-- [android] Reading date and size file meta now supported
-- [android, windows, linux, osx] Added support for natively opening of files
-- [android] Recursive folder scanning now implemented in cordova
-
-##TagSpaces 1.6.1528 / 2013.09.18
-
-- Redesigning the new version notification dialog
-- Hiding loading splashscreen after the layout initialization
-- Font size of alert dialogs changed
-- Corrected issue with jqueryeditinplace library
-- Correcting the sort order of the dates
-- Addded new mindmap visualization in the perspectiveGraph
-- Editing of HTML files is now possible
-- Added grouping by tag groups
-- The file list is refreshed after tag color change
-- Added some new vizualiazions to the perspectiveGraph
-- Implemented check for a disabled localStorage
-- Adding d3.js and underscore.js as a core libraries
-- CSV export function moved to the perspective manager
-- Better check for the similarity of the filepath implemented
-- Smart tags added
-- Changing perspective order now possible in the options
-- Added a class for disabling the text selection
-- Added custom scrollbars for webkit browsers
-- Default perspective renamed to list
-- Calendar perspective renamed to grid
-- Footer shows found files count
-- Set filter is now perspective specific
-- Implementing search funcitonality in the perspective thumb
-- Added grouping by day, month and year in the thumbPerspective
-- Added warning for chrome users if TagSpaces has no access to local file URLs
-- Tags are now colored in the fileopener
-- Filter in default perspective has now a red icon if it is not empty
-- New library fixing a bug preventing opening a directory selection dialog in linux on chrome
-- [Firefox] Improving the firefox's toolbar button integration
-- [Firefox] Issue in Firefox on OSX with renaming/taging of files now workarrounded
-- [Chrome] TagSpaces opens automatically on first install in chrome
-- [Chrome] New version of the npapi for chrome under windows integrated, supporting real file renaming and last modiefied date for files
-- [Win32] Added win32 builder in the build.xml
-
-##TagSpaces 1.5.1448 / 2013.08.11
-
-- Numerous UI Improvements
-- Added a new viewer for image files
-- Added a basic functionality for changing the colors of tags
-- The text in the search filter is now remembered accross the current session
-- The thumb image status, the size/path columns and the sort status are now remembered for the current session
-- It is now possible to change the position of the tag in the filename.
-- Improvements in the parsing and displaying of file titles
-- Improvements in displaying file sizes
-- Added additional column for the file extension in default perspective
-- A new created location is now automatically opened after its creation
-- A location name is extracted from the directory path as a suggestion
-- Enhancing tag suggestion with UI improvements and suggestions from the containing directory name
-- A new created file is now automatically opened after its creation
-- Adding the functionality to reload a opened file, which has been renamed/tagged
-- Adding add a tag button to the current file in the file viewer menu
-- Added reload current file functionality to the file viewer menu
-- Fixed reloading tagspaces on cklicking enter in dialogs
-- Added directory create functionality
-- A new text editor extension created based on codemirror
-- A new PDF viewer extension created for the node-webkit platform based on pdf.js
-- [Chrome] Restricting renaming files larger than 5MB in chrome due a missing functionality in the API
-- [Firefox] Added icon to firefox main menu
-- [Firefox OSX] The firefox extension is currently not supporting OSX due a issue in the mozilla's XPCOM api preventing renaming of files. See [#11](https://github.com/tagspaces/tagspaces/issues/11) for more details.
-
-##TagSpaces 1.4.1384 / 2013.06.16
-
-- A bug fixed causing reloading of the addon in a bootstrap modal
-- TagSpaces is not started anymore in firefox as pinned tab, due the possibility to have multiple instances of the addon simultaniously
-- [Firefox] Startup/reloading issues in firefox resolved
-
-##TagSpaces 1.4.1363 / 2013.06.04
-
-- De/Selecting files functionality
-- Added functionality for configuration of filetypes and perspectives
-- Added options dialog with ability to change options like showing hidden files or checkign for new version
-- Extension tag button added to the file opener toolbar
-- Considering hidden directories in the directories navigator
-- Directories look&feel enhanced
-- Standard perspective loaded at first by default
-- Welcoming font-awesome in the project
-- Added follow on twitter button
-- About and Setting buttons shifted to the options dropdown menu
-- Added menu item for reporting issue in github
-- Added menu item for contacting the developers per email
-- Additional file actions shifted to a separate dropdown in file opener
-- Taggroup position can be changed up and down
-- Tags can now be moved with drag & drop between taggroups
-- UI migrated to Bootstrap
-- Added edit in place for the title of a opened file
-- Standard perspective added, replacing basic and search perspectives
-- Added thumbnail zooming functionality in the standard perspective
-- Max dimension of thumbs changed to 100px
-- Adding support of thumbnails in the standard perspective 
-- Adding buttons in the standard perspective for toogling the tags and filedetails columns 
-- Fixed a bug for reopening a file after applying some changes on it
-- Added buttons in the file opener for getting the next and previous file in a perspective
-- Added file details area in the file opener
-- Added a button for toggling the file details
-- Now is possible to create directories starting with digits
-- Added a functionality for creating of taggroups
-- Duplicating tagsgroup functionality disabled
-- Added a functionality for checking if new version is available
-- [Firefox] bugfix for listing directories with wrond enconding
-
-##TagSpaces 1.3.1284 / 2013.03.29
-
-- Added GTD as a default taggroup
-- New welcome hint shown if new favorite directories exist.
-- Add support for dropping of tags over the search entries
-- Allowing adding multiple tags to multipe files
-- Tag button created in files view
-- Removing the focus from the edit button, after clicking on it
-- Bug fixed in search view preventing from renaming and opening files from the context menu
-- Tag suggestion working again.
-- Fixed issue with no possible dropping of tags on a file with no tags
-- Enabling drag&drop of files in tag & search views
-- Closing a opened files after it is moved to a other directory
-- Issue [#5](https://github.com/tagspaces/tagspaces/issues/5) fixed (Opening of files in file view was broken)
-- Information shown in the browser title improved
- 
-##TagSpaces 1.3.1235 / 2013.02.16
-
-- File tagging now possible with drag & drop
-- Search results visualization redesigned
-- Resets the search filter by view change
-- Added start here hint/tooltip
-- Context menu for files and file titles unified
-- Drag&Drop for moving files in directories implemented
-- Added separate context menu for file extension
-- Functionality for upgrading of the settings implemented
-- Loading Animation now works while creating directory indexes
-- Name of the current favorite folder shown in title of the tab/applicaition
-- [Firefox] Adding creatingDirectoryTree to the mozilla io API
-
-##TagSpaces 1.2.1200 / 2013.01.11
-
-- Dynatree library removed from the project
-- About.html updated
-- Property for persisting of the extensionPath added to the default settings
-- ViewerBrowser extension integrated in the core of the application
-- New algorithm for the directory browsing implemented
-- Buttons for switching the views are now aligned left.
-- Icon of the toggleLeftPanel changed
-- Loading animation now disappears (visibility: hidden instead of display: none)
-- Directory sorting improved
-- A new concept for directory navigation implemented
-- All TagGroup are now opened by default
-- First run detection implemented
-- Added support for SVG files in the settings
-- Tag visualization realization exchanged with modified jqueryui accordion
-- Adding datepicker for editing date tags
-- Setting white as a background color for fullscreen mode
-- Tag suggestion functionality now splits the filename with space, comma, plus, underscore and score delimiters
-- Integration of the jquery.dropdown library for context menus
-- Fullscreen button implemented properly
-- Added auto complete functionality to the add tag dialog.
-- Displaying the build number as a label over the application version
-- Added getAllTags function for extracting all plain tags from the settings
-- [Firefox] Extensions folder could now be located outside the add-on's folder.
-- [Firefox] TagSpaces icon/button is added on installation time automatically to the firefox's navigation bar
-- [Firefox] Opening of a directory from the context menu implemented
-- [Chrome] Allowing to load local files in chrome
-- [Chrome] Fixed bug preventing saving of text files in chrome
-
-##TagSpaces 1.1.1181 / 2012.12.23
-
-- Optimizations in the loading mechanism
-- jquery layout version exchanged
-- [Firefox] Exporting undate.rdf to the release folder of tagspaces.org repository
-- Added custom css for MD-files rendering
-- jquery-ui-custom library exchanged with the the developers version of it
-- [Firefox] Extension will be automatically unzipped during the installation
-- LICENSE file linked in the about box
-- [Firefox] Added UI fuctionality for opening the parent folder of a file
-- [Firefox] Added functionality for opening a directory, selecting a file and a directory from the file system

@@ -1,0 +1,45 @@
+{
+  "appId": "org.tagspaces.desktopapp",
+  "asar": true,
+  "files": [
+    "dist/",
+    "node_modules/",
+    "app.html",
+    "splash.html",
+    "main.prod.js",
+    "main.prod.js.map",
+    "third-party.txt",
+    "LICENSE.txt",
+    "version.json",
+    "package.json"
+  ],
+  "copyright": "Copyright © 2020 TagSpaces UG (haftungsbeschraenkt)",
+  "artifactName": "${name}-${os}-${arch}-${version}.${ext}",
+  "win": {
+    "target": [
+      "nsis",
+      // "portable",
+      "zip"
+    ],
+    "icon": "resources/icon.ico"
+  },
+  "mac": {
+    "target": ["zip", "dmg"],
+    "icon": "resources/icon.icns"
+  },
+  "linux": {
+    "target": ["deb", "tar.gz", "appImage"],
+    "category": "Office",
+    "icon": "resources/icon.icns"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "license": "app/LICENSE.txt",
+    "include": "resources/installer.nsh"
+  },
+  "directories": {
+    "buildResources": "resources",
+    "output": "../builds"
+  }
+}
