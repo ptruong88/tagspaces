@@ -1,5 +1,189 @@
 # Changelog
 
+> Starting from version 4 of the TagSpaces the changelog was moved to the [what's new page](https://www.tagspaces.org/whatsnew/) of the official project website.
+
+## Version 3.11.6 / 2021.08.31
+
+### 🎉 New features
+
+- set tagging method per location
+- move tag groups with drag and drop
+- allow to change the order of the tags on a tagged file or folder with drag and drop
+- added file duplicate feature - the newly created files get automatically two new tags: _copy_ and the current date and time (old_file_name [tag1].txt -> old_file_name [tag1 copy 20210702~183456].txt)
+- add "Apply tag" feature to the tag's menu in the tag library, allowing you to add a tag to selected files without drag and drop
+- new optional WYSIWYG markdown editor added as editor and viewer extension
+- sorting file extension list in the settings alphabetically
+- added an option for disabling the warning by opening external files (#1495)
+
+### 🌟 Enhancements
+
+- migration to a new extension structure, adjusting the list of the supported file types
+- improve handling location tag groups
+- user interface improvements in the search area
+- migrate away from using remoteModule in Electron due to potential security issues
+- do not show hidden files in search results if setting is do not show files with dot(.)
+- added close button to all dialogs
+- adding help links to perspectives
+- adjusting fuzzy search parameters
+- added a flag for generating thumbnails on loading directory content
+- improving on-boarding dialog
+- improving pagination of search result and default perspective, fixing Cordova issues
+- updating to electron 13.2.2
+
+### 🐛 Bug fixes
+
+- fix refresh issue after adding tags #1371
+- fixed issue for creating sub directories in location with a relative path
+- fix Opening parent folder from the button in perspective does not work always on windows network drive
+- fix issue with empty search query
+- fix hamburger menu in the mobile mode
+- fix android paths on locations
+- upload in web to Minio server broken
+- fix Cordova android upload files
+- fix downloader plugin
+- remove takePicture for Android DirectoryMenu.tsx
+- remove export and saveAs functionalities for Android
+
+## PRO
+
+- Add folder ignore patterns for navigation, indexing and watching (#1440)
+- Stored search queries for later use
+- Location tags allowing you
+- Many improvement in the Mapigue perspective
+- Add show folders in the Mapique perspective, allowing navigation in sub directories
+- Optimizing the CSV export of the search results, redefining the exported columns
+
+## Version 3.10.4 / 2021.06.15
+
+### 🎉 New features
+
+- added new viewer for opening spreadsheet files like CSV, ODT or XLSX
+- make OpenStreetMap tile server configurable in the settings
+- allow changing the order of locations with drag and drop
+- geo tagging and custom date tagging many selected files does not work
+- use the thumb of a folder as thumb for the parent folder
+- extend the tag menu with add to tag group entry, enable dnd of tag from the default perspective to tag library
+- added strict(case sensitive) and semi strict search
+- adding support for JIF and JFIF files #1442
+- added maximum age of the search index per location locations
+- **[PRO]** added support for saved searches
+- **[PRO]** added support for sharable links with validation duration in object storage locations
+- **[PRO]** add input fields for entering lat and long directly in the geo tagging dialog
+- **[PRO]** export current folder content or search results entries as CSV file
+- **[PRO]** added support for multi factor auth (MFA) for TagSpaces Enterprise
+- **[PRO]** added new smart icon as pin for files and folder, redesigning pin popup
+- **[PRO]** implement coloring map icons according to the color of the first tag
+- **[PRO]** extend the tag menu with add to tag group
+
+### 🌟 Enhancements
+
+- create tab for advanced settings
+- improve dark mode for the entry properties
+- update Norwegian, Hungarian and Japanese translation
+- improvements in the search and thumbnail generation snackbar
+- parse text query for containing tags and optimize search reset (#1422)
+- **[PRO]** improving thumbnail generation for text files
+
+### 🐛 Bug fixes
+
+- reducing the usage of openFileNatively, fixing #1420
+- removing the location limitation of the search string in the fuzzy search
+- making index preparation more robust
+- clear folder background color
+- default sorting per name is now alphabetic
+- search tags by camel case #1426
+- **[PRO]** fix deleting folder in object storage containing others folders
+- **[PRO]** hide mobile side-menu during the amplify login process
+- **[PRO]** improve folder creation in object stores
+- **[PRO]** fix show thumbnails in object stores
+
+## Version 3.9.5 / 2021.03.27
+
+### 🎉 New features
+
+- Added "Open parent folder internally" to the file menu, useful for file and folder entries in search results
+- Searched for any of the tags in a given tag group (OR search) (#1364)
+- Show directory menu on right click in the default and KanBan perspective
+- Added experimental support for Mac arm64 architecture
+- Changes in the context menu for files in the default perspective depending on the current selection
+- Added "Close All Locations" functionality in the locations context menu
+- Added "Use as Thumbnail for Current Folder" menu item in the file menu of the default perspective
+- **[PRO]** Added support for deleting not empty folders on object storage (#1351)
+- **[PRO]** Added missing rename folder functionality on object storage (#1352)
+- **[PRO]** Enable setting custom thumbnails on object storage locations
+- **[PRO]** Directory watching adjusted to the new indexing strategy, changes in the sidecar are now reflected in the user interface
+- **[PRO]** Added switcher toolbar for easy switching between perspectives
+- **[PRO]** Added optional sessionToken parameter to object store locations
+- **[PRO]** Many improvements in the KanBan perspective
+- **[Enterprise]** Added login screen with Cognito support
+- **[Enterprise]** Added user profile area and a sign out button in the help section
+
+### 🌟 Enhancements
+
+- Korean, Spanish, Armenian and Japanese translations updated
+- Added auto-focus on the tagging input field in the tagging dialog #1320
+- Added extra close button to some dialogs
+- **[PRO]** Improving file uploading experience on object storage
+- **[PRO]** Improvements in location export dialog, added select/deselect locations functionality
+- **[PRO]** Refresh current folder after closing upload dialog in object storage mode
+- **[PRO]** add isNotEditable in location's model, preventing exporting and editing locations
+- **[Enterprise]** Allow tag library to be loaded from dynamoDB
+
+### 🐛 Bug fixes
+
+- Fixing double tags in search results fixing #1354
+- Fixing issue with deleting tags on multiple files
+
+## Version 3.8.4 / 2021.01.29
+
+### 🎉 New features
+
+- integration of the help panel for mobile mode
+- add reload app button in the setting general tab
+- make uuid of locations visible and editable
+- introducing openLink for handling external and internal links
+- enable opening folders from command line as parameter
+- added tooltip in about dialog showing detailed version infos
+- improve showing paths for cloud locations
+- add open link dialog
+- added link in entry properties for sharing files and folders, refactoring entry properties
+- adding history navigation in the desktop app as a experimental feature
+- redesign entry extension badge in the entry opener and grid perspective
+- readonly externally configured locations
+- **[PRO]** adding support for importing and exporting location configurations
+
+### 🌟 Enhancements
+
+- hide file menu by default, showing it with ALT
+- removing transparency of tags in default perspective
+- making default perspecitive toolbar transluent (#1280)
+- limit the logo width to 200px
+- disable context menu on locations in readonly mode
+- update german, indonesian and italian translations
+- added current ui theme as url parameter for the viewers and editors
+- **[PRO]** making smart tag deactivatable in the UI
+- **[PRO]** theme colors are now customizable
+- **[PRO]** added custom logo for the web version
+- **[PRO]** welcome panel is configurable
+- **[PRO]** make sidebar color and advanced search configurable
+- **[PRO]** polish PWA app
+
+### 🐛 Bug fixes
+
+- **[android]** fix folder selection for location in the Android app
+- **[android]** fix cordova sdcard paths
+- correct folder name in the deletion dialog
+- re-enable open file from command line
+- fix issue with two cloud locations with the same or no path are not selected properly
+- fix update issue on folder deletion from top left direcory menu
+- fix rename a folder from the 3-dot menu
+- fix select all entries state after change to empty location
+- handle renames and uploads on read-only s3 connection
+- switching s3 locations with no path broken
+- fix colors of the file and folder title in dark mode
+- fix broken file editing after changing description or adding tag
+- **[PRO]** enable exiting fullscreen in gallery perspective on mobile devices
+
 ## Version 3.7.6 / 2020.11.11
 
 ### 🎉 New features

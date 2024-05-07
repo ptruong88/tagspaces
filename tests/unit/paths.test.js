@@ -1,11 +1,12 @@
-import AppConfig from '../../app/config';
+import { test, expect } from '@playwright/test';
+import { AppConfig } from '@tagspaces/tagspaces-common';
 
 const {
   baseName,
   extractFileExtension,
   getMetaDirectoryPath,
-  getMetaFileLocationForFile
-} = require('../../app/utils/paths');
+  getMetaFileLocationForFile,
+} = require('@tagspaces/tagspaces-common/paths');
 
 const dirSeparatorUnix = '/';
 const dirSeparatorWin = '\\';
@@ -22,7 +23,7 @@ executeTests(
   '../remote.php/webdav/[20120125 89.4kg 19.5% 2.6kg]',
   '',
   '',
-  dirSeparatorUnix
+  dirSeparatorUnix,
 );
 
 function executeTests(dirPath, fileName, fileExtension, dirSeparator) {
@@ -37,21 +38,21 @@ function executeTests(dirPath, fileName, fileExtension, dirSeparator) {
     const name = baseName(filepath, dirSeparator);
     expect(
       name === fileName + (fileExtension ? '.' + fileExtension : '') ||
-        name === filepath
+        name === filepath,
     ).toBeTruthy();
   });
 
-  test(platform + ' extractFileExtension', () => {
+  test(platform + ' extractFileExtension ' + filepath, () => {
     expect(extractFileExtension(filepath, dirSeparator)).toBe(fileExtension);
   });
 
-  test(platform + ' getMetaDirectoryPath', () => {
+  test(platform + ' getMetaDirectoryPath ' + filepath, () => {
     expect(getMetaDirectoryPath(dirPath, dirSeparator)).toBe(
-      dirPath + dirSeparator + AppConfig.metaFolder
+      dirPath + dirSeparator + AppConfig.metaFolder,
     );
   });
 
-  test(platform + ' getMetaFileLocationForFile', () => {
+  test(platform + ' getMetaFileLocationForFile ' + filepath, () => {
     expect(getMetaFileLocationForFile(filepath, dirSeparator)).toBe(
       dirPath +
         dirSeparator +
@@ -59,7 +60,7 @@ function executeTests(dirPath, fileName, fileExtension, dirSeparator) {
         dirSeparator +
         fileName +
         (fileExtension ? '.' + fileExtension : '') +
-        AppConfig.metaFileExt
+        AppConfig.metaFileExt,
     );
   });
 }

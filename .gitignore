@@ -16,8 +16,9 @@ build/Release
 .eslintcache
 
 # Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
-app/node_modules
+src/renderer/node_modules
 
 # OSX
 .DS_Store
@@ -27,22 +28,24 @@ flow-typed/npm/*
 !flow-typed/npm/module_vx.x.x.js
 
 # App packaged
-release
-app/main.prod.js
-app/main.prod.js.map
-app/bundle.js
-app/bundle.js.map
-app/style.css
-app/style.css.map
-app/package-lock.json
+release/app/dist
+release/build
+.erb/dll
+src/renderer/main.prod.js
+src/renderer/main.prod.js.map
+src/renderer/bundle.js
+src/renderer/bundle.js.map
+src/renderer/style.css
+src/renderer/style.css.map
+src/renderer/package-lock.json
 dist
 dll
 main.js
 main.js.map
-package-lock.json
 
 .idea
 *.iml
+.vscode
 npm-debug.log.*
 
 # Cordova files
@@ -56,15 +59,15 @@ cordova/platforms/android/assets/www/*
 cordova/platforms/android/app/src/main/assets/www/*
 cordova/plugins/**/*
 
-extensions/*
-
-app/yarn.lock
+extensions
 
 test/file-structure
 
-app/version.json
-app/THIRD-PARTY.html
-app/THIRD-PARTY.txt
+public/modules/@tagspaces/extensions
+public/modules/@tagspacespro/extensions
+
+src/renderer/version.json
+src/renderer/third-party.txt
 
 scripts/setuppro.js
 scripts/enablepro.js
@@ -75,13 +78,19 @@ CHANGELOG-PRO.TXT
 
 web/dist
 web/files
-web/node_modules
+web/modules
 web/LICENSE.txt
 web/third-party.txt
 web/sw-config.js
+web/EULA.txt
 
-app/extconfig*
+.env
+src/.env
+src/main/config
+src/renderer/extconfig*
+public/extconfig*
 web/extconfig*
+!web/extconfig.tmpl.js
 cordova/www/extconfig.js
 
 reports/*
@@ -90,9 +99,37 @@ coverage/
 tests/*
 !tests/unit/
 !tests/e2e/
-!tests/minioEnv.js
-!tests/webEnv.js
+!tests/global-setup.js
+!tests/global-setup-minio.js
+!tests/global-setup-web.js
+!tests/global-teardown.js
+!tests/global-teardown-minio.js
+!tests/global-teardown-web.js
+!tests/setup-functions.js
+!tests/test-data-refresh.js
+!tests/create-1000files-nothumbs.sh
+!tests/create-1000files.js
+!tests/create-1000folders.js
 
 builds/*
 web/sw-con
 .ycache/*
+
+/src/renderer/aws-exports.js
+/src/renderer/graphql/*
+/src/renderer/models/*
+cordova/platforms/ios/www/yarn.lock
+cordova/platforms/ios/www/package.json
+junit.xml
+test-reports/*
+test-results/*
+playwright-report/*
+
+/src/renderer/**main.prod.js**
+
+deploy.sh
+
+docker/*.zip
+tx
+
+tagspsacespro

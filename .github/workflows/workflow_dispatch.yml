@@ -1,37 +1,64 @@
-name: manual workflow dispatch trigger
+name: Manual Workflow Dispatch Trigger
 on:
   workflow_dispatch:
     inputs:
       command:
-        description: 'Command to execute e2e tests default: yarn test-e2e-electron'
+        description: 'Command to execute e2e tests default: npm run test-playwright-web-headless'
         required: true
-        default: 'test-one'
+        default: 'test-playwright-web-headless'
 
 jobs:
   e2eTests:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checking out default branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           submodules: true
-      - uses: actions/setup-node@v2-beta
+      - name: Checkout TestData
+        uses: actions/checkout@v4
         with:
-          node-version: '10.x'
-      - name: Running yarn install, prettier and type checks
+          repository: tagspaces/testdata
+          path: tests/testdata
+      - name: Configure NPM for TagSpaces Pro
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          always-auth: true
+          registry-url: https://npm.pkg.github.com/
+          scope: '@tagspacespro'
+      - name: Running npm install, prettier and type checks
         run: |
-          yarn install --check-files --cache-folder .ycache
-          yarn prettier-check
-          yarn type-check
+          npm install
+          npm run generate-extensions
+          npm run prettier-check
+          npm run type-check
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.TSPNPMINSTALL }}
       - name: Run Unit tests
-        run: yarn test-unit
+        run: npm run test-unit
+      - uses: suisei-cn/actions-download-file@v1.6.0
+        id: minio
+        name: Download Minio program
+        with:
+          # url: 'https://dl.min.io/server/minio/release/windows-amd64/minio.exe'
+          url: 'https://dl.min.io/server/minio/release/linux-amd64/minio'
+          target: tests/bin/
+      - name: Make Minio executable
+        run: chmod +x ./tests/bin/minio
       - name: Run Electron tests
         run: |
-          yarn setup-ext
-          yarn build-main
-          yarn build-e2e
-          yarn ${{ github.event.inputs.command }}
-      - uses: actions/upload-artifact@v2
+          npm run build-e2e
+          npm run ${{ github.event.inputs.command }}
+      - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: test-reports
-          path: tests/test-reports/
+          name: test-pages
+          path: tests/test-pages/
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-artifacts
+          path: |
+            tests/test-pages/
+            tests/test-reports/
